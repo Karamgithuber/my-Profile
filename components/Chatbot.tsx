@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Loader2, Minimize2, Mail } from 'lucide-react';
+import { MessageCircle, X, Send, Loader2, Minimize2, Mail, ExternalLink } from 'lucide-react';
 import { GoogleGenAI, Type, FunctionDeclaration, Tool, Content } from "@google/genai";
 import { PERSONAL_INFO, EXPERIENCE, PROJECTS, SKILLS, SERVICES } from '../constants';
 
@@ -11,7 +11,11 @@ Your goal is to help visitors by answering questions about ${PERSONAL_INFO.name}
 Here is the context about ${PERSONAL_INFO.name}:
 - Role: ${PERSONAL_INFO.role}
 - About: ${PERSONAL_INFO.about}
-- Contact: ${PERSONAL_INFO.email}, ${PERSONAL_INFO.phone}
+- Email: ${PERSONAL_INFO.email}
+- LinkedIn: ${PERSONAL_INFO.linkedin}
+- Upwork: ${PERSONAL_INFO.upwork}
+- GitHub: ${PERSONAL_INFO.github}
+- WhatsApp: ${PERSONAL_INFO.whatsapp}
 - Experience: ${JSON.stringify(EXPERIENCE)}
 - Projects: ${JSON.stringify(PROJECTS)}
 - Skills: ${JSON.stringify(SKILLS)}
@@ -48,6 +52,11 @@ const emailTool: FunctionDeclaration = {
 interface ChatMessage {
   role: 'user' | 'model';
   text: string;
+  action?: {
+    label: string;
+    url: string;
+    primary: boolean;
+  };
 }
 
 export const Chatbot: React.FC = () => {
@@ -123,19 +132,24 @@ export const Chatbot: React.FC = () => {
              const body = `Name: ${args.name}\nEmail: ${args.email}\n\nMessage:\n${args.message}\n\n[Chat Context]\n${args.chat_transcript}`;
              const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
              
-             // Open the email client
-             window.open(mailtoUrl, '_blank');
+             // We add a button to the chat instead of auto-opening to avoid popup blockers
+             setMessages(prev => [...prev, { 
+                 role: 'model', 
+                 text: `I've drafted the email for you. Please click the button below to open your email client and send it.`,
+                 action: {
+                     label: "Send Email",
+                     url: mailtoUrl,
+                     primary: true
+                 }
+             }]);
 
              functionResponses.push({
                functionResponse: {
                  name: 'sendEmail',
-                 response: { result: 'success', message: 'Email client opened successfully.' },
+                 response: { result: 'success', message: 'Email draft button presented to user.' },
                  id: call.id
                }
              });
-             
-             // Update UI to show system action
-             setMessages(prev => [...prev, { role: 'model', text: `✓ I've opened your email client to send the message!` }]);
           }
         }
 
@@ -160,7 +174,7 @@ export const Chatbot: React.FC = () => {
                 config: { systemInstruction: SYSTEM_INSTRUCTION }
             });
             
-            finalText = finalResponse.text || "Please check your email client to finish sending the message.";
+            finalText = finalResponse.text || "";
             // Update history with the final turn
             currentHistory.push({ role: 'model', parts: [{ text: finalText }] });
         }
@@ -249,7 +263,7 @@ export const Chatbot: React.FC = () => {
                 {messages.map((msg, idx) => (
                     <div 
                         key={idx} 
-                        className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                        className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
                     >
                         <div 
                             className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
@@ -260,6 +274,23 @@ export const Chatbot: React.FC = () => {
                         >
                             {msg.text}
                         </div>
+                        
+                        {/* Action Button (if present) */}
+                        {msg.action && (
+                            <a 
+                                href={msg.action.url}
+                                target={msg.action.primary ? "_self" : "_blank"}
+                                rel="noreferrer"
+                                className={`mt-2 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all shadow-lg ${
+                                    msg.action.primary 
+                                        ? 'bg-brand-accent text-brand-dark hover:bg-brand-accentHover' 
+                                        : 'bg-white/10 text-white hover:bg-white/20'
+                                }`}
+                            >
+                                <Mail size={14} />
+                                {msg.action.label}
+                            </a>
+                        )}
                     </div>
                 ))}
                 {isLoading && (

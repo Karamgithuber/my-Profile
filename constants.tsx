@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Job, Project, Skill, Service, Stat } from './types';
 import { Monitor, Server, Database, Layers, Code, Globe, Smartphone, Palette, Box, Layout } from 'lucide-react';
@@ -5,11 +6,12 @@ import { Monitor, Server, Database, Layers, Code, Globe, Smartphone, Palette, Bo
 export const PERSONAL_INFO = {
   name: "Karam Elahi",
   role: "Full Stack Developer",
-  email: "karam.ciit@gmail.com",
+  email: "karam.gdc@gmail.com",
   phone: "+92 342 6418460",
   whatsapp: "https://wa.me/923426418460",
-  linkedin: "https://linkedin.com",
-  github: "https://github.com",
+  linkedin: "https://www.linkedin.com/in/karam-elahi-674443242/",
+  github: "https://github.com/Karamgithuber/",
+  upwork: "https://www.upwork.com/freelancers/~014e869fa88997ad55?viewMode=1",
   about: "I'm Karam Elahi, I've been working in tech for over 4 years. I focus on building practical and reliable solutions that help businesses solve problems and achieve their goals. I am a firm believer in the power of technology to transform businesses and lives."
 };
 
@@ -57,57 +59,30 @@ export const EXPERIENCE: Job[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "NavegaApp",
-    description: "NavegaApp is a modern boat rental platform that allows users to browse, select, and rent boats with ease. The platform provides multiple payment options, making the booking process seamless.",
-    tags: ["Boat Rent", "Booking"],
-    link: "https://navegaapp.com",
-    image: "https://picsum.photos/seed/navega/800/500",
-    category: "Boat Rent"
+    title: "Worqua - Field Management System",
+    description: "A comprehensive Field Management System built with the ABP Framework, .NET Core, and SQL Server to streamline field operations and improve task management efficiency. Features include task allocation, route planning, and real-time employee tracking.",
+    tags: ["ABP Framework", ".NET Core", "Angular", "SQL Server"],
+    link: "http://worqua.com",
+    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800", // Fixed broken image with a reliable dashboard placeholder
+    category: "SaaS"
   },
   {
     id: 2,
-    title: "Tomorrow Byte",
-    description: "Tomorrow Byte is a software-service agency website that offers a suite of digital design and development services including web apps, mobile apps, desktop apps, SaaS products, and UI/UX design.",
-    tags: ["Agency", "Portfolio"],
-    link: "#",
-    image: "https://picsum.photos/seed/tomorrow/800/500",
-    category: "Ecommerce"
+    title: "Sales Center AI",
+    description: "A Sales Automation Platform designed to streamline sales workflows and enhance business productivity. Includes high-performance RESTful APIs for managing customers, leads, and order processing, along with interactive dashboards.",
+    tags: [".NET Core", "Angular", "Material UI", "SaaS"],
+    link: "https://www.salescenter.ai/",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800", // Business Dashboard
+    category: "SaaS"
   },
   {
     id: 3,
-    title: "Awake Solution",
-    description: "Awake Company is a professional service / software-agency style website built to showcase the company's offerings, services, and portfolio.",
-    tags: ["Corporate", "Service"],
-    link: "#",
-    image: "https://picsum.photos/seed/awake/800/500",
-    category: "Software Company"
-  },
-  {
-    id: 4,
-    title: "CodeWatan",
-    description: "CodeWatan is a professional software development agency offering custom software, web, and mobile application solutions. The platform is designed to showcase the company's services.",
-    tags: ["Agency", "Dev"],
-    link: "#",
-    image: "https://picsum.photos/seed/watan/800/500",
-    category: "Software Company"
-  },
-  {
-    id: 5,
-    title: "Brit Beds",
-    description: "Brit Beds is a UK-based eCommerce platform specializing in premium beds, mattresses, and bedroom furniture.",
-    tags: ["E-commerce", "Retail"],
-    link: "#",
-    image: "https://picsum.photos/seed/brit/800/500",
-    category: "Ecommerce"
-  },
-  {
-    id: 6,
-    title: "Dream Furniture UK",
-    description: "Dream Furniture is a UK-based eCommerce platform specializing in beds, mattresses, and bedroom furniture.",
-    tags: ["E-commerce", "Furniture"],
-    link: "#",
-    image: "https://picsum.photos/seed/dream/800/500",
-    category: "Ecommerce"
+    title: "Link Shortener",
+    description: "A custom URL shortener service with high-performance APIs, QR code generation, and detailed analytics for tracking user engagement. Optimized SQL Server database structures ensure efficient storage and analytics.",
+    tags: [".NET Core", "Angular", "SQL Server", "Analytics"],
+    link: "https://www.linkshortener.at/",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800", // Analytics Dashboard
+    category: "Web Tool"
   }
 ];
 
@@ -119,45 +94,38 @@ export const SKILLS: Skill[] = [
 
 export const SERVICES: Service[] = [
   {
-    title: "Mobile Development",
-    description: "Build scalable, high-performance mobile apps to reach users on the devices they use most.",
-    icon: <Smartphone className="w-6 h-6" />,
-    techStack: ["React Native", "iOS", "Android", "Flutter"]
-  },
-  {
-    title: "Website Development",
-    description: "Create fast, responsive, and conversion-focused websites that deliver strong digital presence and user trust.",
+    title: "Full Stack Development",
+    description: "End-to-end web application development using .NET Core for backend and Angular for frontend to build scalable enterprise solutions.",
     icon: <Globe className="w-6 h-6" />,
-    techStack: ["React", "Angular", "Next.js", "Tailwind"]
+    techStack: [".NET Core", "Angular", "SQL Server", "Web API"]
   },
   {
-    title: "SaaS Applications",
-    description: "Launch powerful SaaS platforms with flexible architecture to serve users at scale and drive recurring revenue.",
+    title: "SaaS Application Development",
+    description: "Architecting and building multi-tenant SaaS platforms using ABP Framework and cloud-ready technologies.",
     icon: <Server className="w-6 h-6" />,
-    techStack: ["Docker", "Typescript", "Node.js", "Postgresql"]
+    techStack: ["ABP Framework", "Docker", "Azure", "CI/CD"]
   },
   {
-    title: "UI/UX Design",
-    description: "Transform complex ideas into intuitive, user-friendly interfaces that boost engagement and retention.",
-    icon: <Palette className="w-6 h-6" />,
-    techStack: ["Figma", "Illustrator", "Framer"]
+    title: "API Development & Integration",
+    description: "Designing high-performance RESTful APIs and integrating third-party services like Stripe, PayPal, and QuickBooks.",
+    icon: <Database className="w-6 h-6" />,
+    techStack: ["REST", "Swagger", "Payment Gateways", "3rd Party APIs"]
   },
   {
-    title: "CMS Development",
-    description: "Control over your website content with a custom or CMS-based solution tailored for easy updates and growth.",
+    title: "Dashboard & Reporting",
+    description: "Creating interactive dashboards and custom reports for data visualization and business intelligence.",
     icon: <Layout className="w-6 h-6" />,
-    techStack: ["Shopify", "Wordpress", "Framer"]
+    techStack: ["Angular Material", "Chart.js", "Bold Reports", "PowerBI"]
+  },
+  {
+    title: "Database Design & Optimization",
+    description: "Designing efficient database schemas, writing complex stored procedures, and optimizing queries for performance.",
+    icon: <Database className="w-6 h-6" />,
+    techStack: ["SQL Server", "Entity Framework", "LINQ", "Performance Tuning"]
   }
 ];
 
-export const WEEKLY_STATS: Stat[] = [
-  { label: "Start Date", value: "November 28, 2025" },
-  { label: "End Date", value: "December 05, 2025" },
-  { label: "Daily Coding Average", value: "4 hrs 51 mins" },
-  { label: "This Week Coding Time", value: "34 hrs" },
-  { label: "Best Day Coding Time", value: "December 03, 2025 (10 hrs 5 mins)" },
-  { label: "All Time Since Today", value: "1,638 hrs 55 mins" },
-];
+export const WEEKLY_STATS: Stat[] = []; // Cleared as requested
 
 export const FAQS = [
     {

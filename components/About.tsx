@@ -73,9 +73,40 @@ export const About: React.FC = () => {
                                 {openJobId === job.id && (
                                     <div className="px-4 pb-4 text-sm text-brand-muted">
                                         <p className="mb-2 text-xs opacity-70">{job.role}</p>
-                                        <ul className="list-disc list-inside space-y-1 text-xs">
+                                        
+                                        <div className="mb-4">
+                                            <p className="text-[10px] uppercase tracking-wider font-bold text-brand-accent mb-2">Skills</p>
+                                            <div className="flex flex-wrap gap-1.5">
+                                                {job.skills.map((skill) => (
+                                                    <span key={skill} className="px-2 py-0.5 bg-white/5 border border-white/10 rounded text-[9px] text-brand-muted">
+                                                        {skill}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <ul className="list-disc list-inside space-y-1 text-xs mb-4">
                                             {job.description.map((d, i) => <li key={i}>{d}</li>)}
                                         </ul>
+
+                                        {job.links && job.links.length > 0 && (
+                                            <div>
+                                                <p className="text-[10px] uppercase tracking-wider font-bold text-brand-accent mb-2">Project Links</p>
+                                                <div className="flex flex-col gap-1">
+                                                    {job.links.map((link) => (
+                                                        <a 
+                                                            key={link} 
+                                                            href={link} 
+                                                            target="_blank" 
+                                                            rel="noreferrer"
+                                                            className="text-xs text-blue-400 hover:underline flex items-center gap-1"
+                                                        >
+                                                            {link.replace('https://', '').replace('http://', '')}
+                                                        </a>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </div>

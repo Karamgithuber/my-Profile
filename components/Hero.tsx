@@ -101,12 +101,12 @@ export const Hero: React.FC<HeroProps> = ({ setPage }) => {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight mb-8 leading-[1.1] opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            Design. Build. Launch. <br />
-            <span className="text-white">Custom solutions.</span>
+            Karam Elahi. <br />
+            <span className="text-brand-accent">Full Stack Developer.</span>
           </h1>
           
           <p className="mt-6 max-w-2xl mx-auto text-lg text-brand-muted mb-12 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-            We turn challenges into growth opportunities through tailored digital solutions.
+            Building scalable enterprise SaaS solutions and high-performance digital products with .NET Core and Angular.
           </p>
           
           <div className="flex justify-center opacity-0 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>

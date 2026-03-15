@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://karamelahi.com/sitemap.xml

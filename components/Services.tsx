@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SERVICES, FAQS } from '../constants';
+import { SERVICES, FAQS, SKILLS_DATA } from '../constants';
 import { ArrowUpRight, ChevronDown, ChevronUp, Code, Database, Globe, Layout, Server, Smartphone, Terminal, Cpu } from 'lucide-react';
 
 export const Services: React.FC = () => {
@@ -8,22 +8,6 @@ export const Services: React.FC = () => {
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   }
-
-  const techBadges = [
-      { name: "Socket", icon: <Terminal size={14} />, color: "text-gray-400" },
-      { name: "MongoDB", icon: <Database size={14} />, color: "text-green-500" },
-      { name: "Redux", icon: <Code size={14} />, color: "text-purple-500" },
-      { name: "CSS", icon: <Layout size={14} />, color: "text-blue-400" },
-      { name: "AI", icon: <Cpu size={14} />, color: "text-red-500" },
-      { name: "Tailwind Css", icon: <Code size={14} />, color: "text-cyan-400" },
-      { name: "Node Js", icon: <Server size={14} />, color: "text-green-600" },
-      { name: "Jest", icon: <Code size={14} />, color: "text-red-400" },
-      { name: "Nuxt Js", icon: <Globe size={14} />, color: "text-green-400" },
-      { name: "TypeScript", icon: <Code size={14} />, color: "text-blue-600" },
-      { name: "React Js", icon: <Code size={14} />, color: "text-cyan-400" },
-      { name: "Next Js", icon: <Globe size={14} />, color: "text-white" },
-      { name: "Gatsby", icon: <Globe size={14} />, color: "text-purple-400" },
-  ];
 
   return (
     <section id="services" className="py-20 bg-brand-dark min-h-screen">
@@ -76,12 +60,81 @@ export const Services: React.FC = () => {
                 into business-focused digital products.
             </h2>
             
-            <div className="flex flex-wrap gap-3 mt-12 opacity-80">
-                {/* Simulated Marquee/Grid */}
-                {techBadges.concat(techBadges).map((tech, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-[#1a1a1a] border border-white/5 px-4 py-2 rounded-full">
-                        <span className={tech.color}>{tech.icon}</span>
-                        <span className="text-brand-muted text-sm font-medium">{tech.name}</span>
+            <div className="mt-16 space-y-16">
+                {/* Technical Skills */}
+                <div>
+                    <div className="flex items-center gap-4 mb-8">
+                        <span className="px-3 py-1 bg-brand-accent/10 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded-full border border-brand-accent/20">Deep Knowledge</span>
+                        <h3 className="text-2xl font-bold text-white">Technical <span className="text-brand-accent">Skills</span></h3>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {SKILLS_DATA.technical.map((cat, i) => (
+                            <div key={i} className="bg-[#121212] p-6 rounded-2xl border border-white/5 hover:border-white/10 transition-all">
+                                <h4 className="text-brand-accent text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
+                                    {cat.category}
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {cat.skills.map((skill, j) => (
+                                        <span key={j} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-brand-muted hover:text-white hover:bg-white/10 transition-all cursor-default">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Front End Development */}
+                <div>
+                    <div className="flex items-center gap-4 mb-8">
+                        <span className="px-3 py-1 bg-brand-accent/10 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded-full border border-brand-accent/20">Creative Side</span>
+                        <h3 className="text-2xl font-bold text-white">Front End <span className="text-brand-accent">Development</span></h3>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {SKILLS_DATA.creative.map((cat, i) => (
+                            <div key={i} className="bg-[#121212] p-6 rounded-2xl border border-white/5 hover:border-white/10 transition-all">
+                                <h4 className="text-brand-accent text-xs font-bold uppercase tracking-wider mb-4 flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>
+                                    {cat.category}
+                                </h4>
+                                <div className="flex flex-wrap gap-2">
+                                    {cat.skills.map((skill, j) => (
+                                        <span key={j} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs text-brand-muted hover:text-white hover:bg-white/10 transition-all cursor-default">
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {/* Platform Expertise Section */}
+        <div className="mb-32">
+            <div className="flex items-center gap-4 mb-8">
+                <span className="px-3 py-1 bg-brand-accent/10 text-brand-accent text-[10px] font-bold uppercase tracking-widest rounded-full border border-brand-accent/20">Tools & Platforms</span>
+                <h3 className="text-2xl font-bold text-white">Platform <span className="text-brand-accent">Expertise</span></h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                    { title: "WordPress & Elementor", desc: "Complete WordPress development, custom functionality, Elementor page builder, and speed optimization.", icon: <Globe size={20} /> },
+                    { title: "QuickBooks", desc: "Financial software integration for automated accounting, invoicing, and expense tracking.", icon: <Database size={20} /> },
+                    { title: "Stripe / PayPal", desc: "Seamless and secure payment gateway integrations for processing online transactions.", icon: <Code size={20} /> },
+                    { title: "Authorize.Net", desc: "Advanced e-commerce payment integration tailored for various cart platforms.", icon: <Code size={20} /> }
+                ].map((item, i) => (
+                    <div key={i} className="bg-[#121212] p-6 rounded-2xl border border-white/5 hover:border-brand-accent/30 transition-all group">
+                        <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-brand-muted group-hover:text-brand-accent group-hover:bg-brand-accent/10 transition-all mb-4">
+                            {item.icon}
+                        </div>
+                        <h4 className="text-white font-bold mb-2">{item.title}</h4>
+                        <p className="text-brand-muted text-xs leading-relaxed">{item.desc}</p>
                     </div>
                 ))}
             </div>

@@ -6,7 +6,7 @@ export interface Job {
   role: string;
   period: string;
   description: string[];
-  link?: string;
+  links?: string[];
   skills: string[];
 }
 
